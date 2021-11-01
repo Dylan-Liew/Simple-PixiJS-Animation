@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // Create the application helper and add its render target to the page
+      let app = new PIXI.Application({ width: 402, height: 190 });
+      document.body.appendChild(app.view);
+
+      // Add background image
+      let bg = PIXI.Sprite.from('background.PNG')
+      app.stage.addChild(bg);
+
+      // Create the sprite
+      let sprite = PIXI.Sprite.from('packet.png');
+      // Edit sprite position
+      sprite.x = 20
+      sprite.y = 50
+      // Edit sprite size
+      sprite.width = 50
+      sprite.height = 50
+      // Add sprite to stage
+      app.stage.addChild(sprite);
+
+      // Add a ticker callback to move the sprite back and forth
+      let elapsed = 0.0;
+      app.ticker.add((delta) => {
+        elapsed += delta;
+        if (sprite.x <= 250){
+          sprite.x = 50 + elapsed;
+        }
+        // if (elapsed > 500){
+        //   console.log(elapsed)
+        //   if (sprite.x <= 1000){
+        //     sprite.x = 250 + elapsed-500;
+        //   }
+        // }
+      });
+    </script>
+  </body>
+</html>
